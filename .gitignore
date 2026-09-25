@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data and generated artifacts
+data/raw/
+data/processed/
+cleaned_data.csv
+customer_features.csv
+customer_features_scaled.csv
+customer_features_with_clusters.csv

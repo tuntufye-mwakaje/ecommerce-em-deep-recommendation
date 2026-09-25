@@ -56,8 +56,8 @@ Covers:
 - PCA-based visualization
 
 The evaluated range was `k = 2` through `k = 10`, with the final
-experiment using 10 components because this was the minimum AIC/BIC
-value within the evaluated range.
+experiment using 10 components because both AIC and BIC reached their
+minimum values at 10 components within the evaluated range.
 
 ## Current Repository Scope
 

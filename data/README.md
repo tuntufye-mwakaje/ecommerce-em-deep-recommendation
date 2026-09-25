@@ -1,20 +1,33 @@
 # Dataset
 
-This project uses the Online Retail dataset (transactions from a UK-based online retailer). The raw dataset is **not** included in this repository. 
-This document explains where to obtain the dataset, how to place it in the repository layout expected by the code, and how to run the preprocessing step to produce the cleaned data used by the notebooks and models.
+This project uses the Online Retail dataset (transactions from a UK-based online retailer). The raw dataset is **not** included in this repository.
 
-Source:
+This document explains where to obtain the dataset, how to prepare the local input expected by the data-cleaning notebook, and how the cleaned customer-level data is produced for the downstream notebooks.
+
+## Source
+
 UCI Machine Learning Repository / Kaggle
 
 Link: https://archive.ics.uci.edu/ml/datasets/Online+Retail
-Please review the dataset page for license and usage restrictions before using the data. You must download the dataset yourself and place it in the `data/raw/` folder described below.
+
+Please review the dataset page for license and usage restrictions before using the data. You must download the dataset yourself.
 
 ## Why the raw data is not included
-The raw dataset is not included in this repository to avoid licensing issues, protect potentially sensitive information, and keep the repository lightweight
 
-# How to download
-## UCI repository (recommended)
-1. Visit the UCI dataset page above.
-2. Download the file (commonly `Online Retail.xlsx`).
+The raw dataset is not included in this repository to avoid redistributing the source dataset and to keep the public repository lightweight.
 
-To reproduce the experiments, download the dataset from the original source and place the required file inside this directory.
+## Local dataset preparation
+
+The data-cleaning notebook currently expects a CSV file named:
+
+`OnlineRetail.csv`
+
+Place this file in the notebook's working directory before running `notebooks/01_data_cleaning.ipynb`.
+
+The notebook reads the file using:
+
+```python
+pd.read_csv("OnlineRetail.csv", encoding="ISO-8859-1")
+```
+
+The notebook then removes invalid transaction records, constructs customer-level behavioral features, and saves the resulting customer-level dataset for subsequent analysis.
