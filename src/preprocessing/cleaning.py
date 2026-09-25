@@ -1,35 +1,53 @@
-import pandas as pd
+﻿import pandas as pd
 
 
 def clean_transactions(df):
     """
-    Perform basic cleaning for transaction-level data.
+    Clean Online Retail transaction-level data.
 
-    The function removes duplicate records and rows missing
-    essential customer/product information.
+    Cleaning operations:
+    1. Remove duplicate rows.
+    2. Remove transactions with missing CustomerID.
+    3. Remove transactions with Quantity <= 0.
+    4. Remove transactions with UnitPrice <= 0.
 
     Parameters
     ----------
     df : pandas.DataFrame
-        Raw transaction data.
+        Raw transaction-level data.
 
     Returns
     -------
     pandas.DataFrame
-        Cleaned transaction data.
+        Cleaned transaction-level data.
     """
+    required_columns = [
+        "CustomerID",
+        "InvoiceNo",
+        "Quantity",
+        "UnitPrice",
+    ]
+
+    missing = [
+        column
+        for column in required_columns
+        if column not in df.columns
+    ]
+
+    if missing:
+        raise ValueError(
+            f"Missing required columns: {', '.join(missing)}"
+        )
+
     cleaned = df.copy()
+
+    cleaned = cleaned.dropna(subset=["CustomerID"])
 
     cleaned = cleaned.drop_duplicates()
 
-    required_columns = ["CustomerID", "StockCode", "Quantity", "UnitPrice"]
-
-    available_columns = [
-        column for column in required_columns
-        if column in cleaned.columns
-    ]
-
-    if available_columns:
-        cleaned = cleaned.dropna(subset=available_columns)
+    cleaned = cleaned[
+        (cleaned["Quantity"] > 0)
+        & (cleaned["UnitPrice"] > 0)
+    ].copy()
 
     return cleaned

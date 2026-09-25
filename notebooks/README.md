@@ -1,21 +1,69 @@
-# Uploading Jupyter notebooks
-Breaking into logical notebooks:
+﻿# Jupyter Notebooks
 
-## Notebook 1
-Contains: 01_data_cleaning - import libraries, load dataset, inspect data, missing values, duplicate records, invalid transactions, cancelled orders, Cleaning
+The notebooks document the experimental workflow for the
+E-Commerce Personalization project.
 
-## Notebook 2
-Contains: 02_exploratory_analysis - customer behavior analysis, product purchasing patterns, revenue distribution, quantity distribution, customer frequency, spending patterns, visualizations
+## Notebook 1 — Data Cleaning
 
-## Notebook 3
-Contains: 03_customer_segmentation - NumPurchases, TotalQuantity, TotalSpending, AvgUnitPrice
-Then, Normalization/scaling and exploratory segmentation
+`01_data_cleaning.ipynb`
 
-## Notebook 4
-Contains: 04_em_clustering - (Expectation-Maximization/GMM work) including, model selection, number of clusters, AIC, BIC, Cluster assignment, Cluster interpretation
+Covers:
 
-## Notebook 5
-Contains: deep_recommendation model - Input - Embedding/representation - Neural Network - Prediction - Recommendation generation
+- Loading the Online Retail dataset
+- Inspecting dataset structure
+- Missing-value analysis
+- Duplicate removal
+- Removal of invalid transactions
+- Customer-level feature construction
 
-## Notebook 6
-Contains: 06_evaluation - metrics such as Precision, Recall, F1, RMSE/MAE, NDCG@k
+The resulting customer-level features are:
+
+- `NumPurchases`
+- `TotalQuantity`
+- `TotalSpending`
+- `AvgUnitPrice`
+
+## Notebook 2 — Exploratory Analysis
+
+`02_exploratory_analysis.ipynb`
+
+Explores customer purchasing behavior and transaction-level patterns
+through statistical analysis and visualizations.
+
+## Notebook 3 — Customer Segmentation
+
+`03_customer_segmentation.ipynb`
+
+Covers:
+
+- Loading customer-level features
+- Selecting the four behavioral features
+- Standardization using `StandardScaler`
+- Preparation of the feature matrix for clustering
+
+## Notebook 4 — Expectation-Maximization Clustering
+
+`04_expectation_maximization_clustering.ipynb`
+
+Covers:
+
+- Gaussian Mixture Model (GMM) clustering
+- Evaluation of candidate cluster counts
+- AIC and BIC model selection
+- Final cluster assignment
+- Cluster-size analysis
+- Cluster profiling
+- PCA-based visualization
+
+The evaluated range was `k = 2` through `k = 10`, with the final
+experiment using 10 components because this was the minimum AIC/BIC
+value within the evaluated range.
+
+## Current Repository Scope
+
+The repository currently contains the implemented data preparation,
+customer feature engineering, exploratory analysis, and EM/GMM
+clustering workflow.
+
+A deep-learning recommendation implementation and separate evaluation
+notebook are not currently included in the repository.

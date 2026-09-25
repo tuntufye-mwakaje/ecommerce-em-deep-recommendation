@@ -1,28 +1,22 @@
 # Source Code
 
-This directory contains reusable Python modules supporting the
-E-Commerce Personalization project.
+The `src/` directory contains reusable Python modules extracted from
+the implemented customer analytics and clustering workflow.
 
-The project combines:
-
-1. Customer behavioral feature engineering
-2. Expectation-Maximization / Gaussian Mixture Model clustering
-3. Cluster profiling and assignment
-4. Deep-learning recommendation
-5. Model evaluation
-
-The Jupyter notebooks in `notebooks/` are used for experimentation,
-visual analysis, and research documentation, while reusable functions
-are organized here to improve modularity and maintainability.
-
-## Source Modules
+## Structure
 
 ```text
 src/
-├── data/            # Dataset loading utilities
-├── preprocessing/   # Data cleaning and preparation
-├── features/        # Customer-level feature engineering
-├── clustering/      # EM/GMM model development
-├── recommendation/  # Deep recommendation components
-├── evaluation/      # Model evaluation metrics
-└── utils/           # Shared input/output utilities# Reusable python modules
++-- __init__.py
++-- data/
+�   +-- __init__.py
+�   +-- loader.py
++-- preprocessing/
+�   +-- __init__.py
+�   +-- cleaning.py
++-- features/
+�   +-- __init__.py
+�   +-- customer_features.py
++-- clustering/
+    +-- __init__.py
+    +-- gmm.py
